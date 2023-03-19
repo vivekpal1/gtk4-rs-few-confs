@@ -216,7 +216,7 @@ fn build_ui(app: &amp;Application) {
         .title(&quot;My GTK App&quot;)
         .child(&amp;button)
         .build();
-    window.show();
+    window.present();
 }</code></pre>
 <p>When we now run the app, we notice that our button <em>and</em> the &quot;close&quot; button are magenta.
 Probably not what we wanted, but that is what our CSS snippet does.
@@ -290,7 +290,7 @@ Which is why we add the style class <code>button-1</code> to the first one.</p>
     let button_1 = Button::with_label(&quot;Press me!&quot;);
     let button_2 = Button::with_label(&quot;Press me!&quot;);
 
-    button_1.add_css_class(&quot;button_1&quot;);
+    button_1.add_css_class(&quot;button-1&quot;);
 <span class="boring">
 </span><span class="boring">    // Create `gtk_box` and add buttons
 </span><span class="boring">    let gtk_box = gtk::Box::builder()
@@ -309,7 +309,7 @@ Which is why we add the style class <code>button-1</code> to the first one.</p>
 </span><span class="boring">        .title(&quot;My GTK App&quot;)
 </span><span class="boring">        .child(&amp;gtk_box)
 </span><span class="boring">        .build();
-</span><span class="boring">    window.show();
+</span><span class="boring">    window.present();
 </span><span class="boring">}</span></code></pre>
 <p>Then, we create a CSS rule that applies to <code>button</code> nodes with the style class <code>button-1</code>.</p>
 <p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/css/3/style.css">listings/css/3/style.css</a></p>
@@ -383,7 +383,7 @@ We set the name of the first one with <a href="../docs/gtk4/prelude/trait.Widget
 </span><span class="boring">        .title(&quot;My GTK App&quot;)
 </span><span class="boring">        .child(&amp;gtk_box)
 </span><span class="boring">        .build();
-</span><span class="boring">    window.show();
+</span><span class="boring">    window.present();
 </span><span class="boring">}</span></code></pre>
 <p>Then, create a CSS rule that applies to <code>button</code> nodes with the name <code>button-1</code>.
 The name is specified after the <code>#</code> symbol.</p>
@@ -442,7 +442,7 @@ Most widgets will document these rules in their documentation under <a href="../
 </span><span class="boring">        .title(&quot;My GTK App&quot;)
 </span><span class="boring">        .child(&amp;gtk_box)
 </span><span class="boring">        .build();
-</span><span class="boring">    window.show();
+</span><span class="boring">    window.present();
 </span><span class="boring">}</span></code></pre>
 <div style="text-align:center"><img src="img/css_5.png" alt="The left button is red, the right one is blue"/></div>
 <h2 id="interface-builder"><a class="header" href="#interface-builder">Interface Builder</a></h2>
@@ -633,13 +633,13 @@ Probably better to revert this immediately again.</p>
 Until now the different tasks weren't nicely separated.
 We can change that by adding the <code>frame</code> and the <code>separators</code> style class to our <code>tasks_list</code>.</p>
 <p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/4/resources/task_row.ui">listings/todo/4/resources/window.ui</a></p>
-<pre><code class="language-xml">&lt;object class=&quot;GtkListView&quot; id=&quot;tasks_list&quot;&gt;
-  &lt;property name=&quot;valign&quot;&gt;start&lt;/property&gt;
-  &lt;style&gt;
-    &lt;class name=&quot;frame&quot;/&gt;
-    &lt;class name=&quot;separators&quot;/&gt;
-  &lt;/style&gt;
-&lt;/object&gt;
+<pre><code class="language-diff"> &lt;object class=&quot;GtkListView&quot; id=&quot;tasks_list&quot;&gt;
+   &lt;property name=&quot;valign&quot;&gt;start&lt;/property&gt;
++  &lt;style&gt;
++    &lt;class name=&quot;frame&quot;/&gt;
++    &lt;class name=&quot;separators&quot;/&gt;
++  &lt;/style&gt;
+ &lt;/object&gt;
 </code></pre>
 <div style="text-align:center"><img src="img/todo_4.png" alt="To-Do app with borders for its task widget"/></div>
 <h2 id="conclusion"><a class="header" href="#conclusion">Conclusion</a></h2>
